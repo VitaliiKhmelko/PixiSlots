@@ -8,6 +8,7 @@ import * as slots from './slots.js';
 })
 export class SlotsComponent implements OnInit, AfterViewInit {
   @ViewChild('container') container: ElementRef<HTMLDivElement>;
+  game: { view: any; startPlay: () => void };
 
   constructor() { }
 
@@ -15,12 +16,14 @@ export class SlotsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const view = slots.view;
-    this.container.nativeElement.appendChild(view);
+    slots.load(this.container.nativeElement).then(game => {
+      this.game = game;
+      this.container.nativeElement.appendChild(this.game.view);
+    });
   }
 
-  spin(): void {
-    slots.startPlayGame();
+  startPlay(): void {
+    this.game.startPlay();
   }
 
 }
