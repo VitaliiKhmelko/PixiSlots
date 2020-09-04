@@ -62,7 +62,7 @@ export function load(htmlElement) {
             app.stage.addChild(reelContainer);
 
             // Build top & bottom covers and position reelContainer
-            const margin = (app.screen.height - SYMBOL_SIZE * 3) / 2;
+            const margin = (app.screen.height - SYMBOL_SIZE * 3);
             reelContainer.y = margin;
             reelContainer.x = Math.round(app.screen.width - REEL_WIDTH * 5);
             const top = new PIXI.Graphics();
@@ -90,11 +90,6 @@ export function load(htmlElement) {
                 wordWrapWidth: 440,
             });
 
-            // const playText = new PIXI.Text('Spin the wheels!', style);
-            // playText.x = Math.round((bottom.width - playText.width) / 2);
-            // playText.y = app.screen.height - margin + Math.round((margin - playText.height) / 2);
-            // bottom.addChild(playText);
-
             // Add header text
             const headerText = new PIXI.Text('PIXI MONSTER SLOTS!', style);
             headerText.x = Math.round((top.width - headerText.width) / 2);
@@ -102,14 +97,6 @@ export function load(htmlElement) {
             top.addChild(headerText);
 
             app.stage.addChild(top);
-            // app.stage.addChild(bottom);
-
-            // Set the interactivity.
-            // bottom.interactive = true;
-            // bottom.buttonMode = true;
-            // bottom.addListener('pointerdown', () => {
-            //     startPlay();
-            // });
 
             let running = false;
 
