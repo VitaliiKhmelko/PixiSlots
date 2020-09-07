@@ -8,7 +8,6 @@ on:
 
 jobs:
   firebase-deploy:
-    - uses: actions/checkout@master
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@master
