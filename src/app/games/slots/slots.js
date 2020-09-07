@@ -68,9 +68,6 @@ export function load(htmlElement) {
             const top = new PIXI.Graphics();
             top.beginFill(0, 1);
             top.drawRect(0, 0, app.screen.width, margin);
-            // const bottom = new PIXI.Graphics();
-            // bottom.beginFill(0, 1);
-            // bottom.drawRect(0, SYMBOL_SIZE * 3 + margin, app.screen.width, margin);
 
             // Add play text
             const style = new PIXI.TextStyle({
