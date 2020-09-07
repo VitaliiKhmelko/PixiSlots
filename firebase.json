@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "/dist/PixiSlots",
+    "public": "dist/PixiSlots",
     "ignore": [
       "firebase.json",
       "**/.*",
