@@ -1,4 +1,4 @@
-name: Firebase Deploy
+name: Build and Deploy
 on:
   push:
     branches:
@@ -13,17 +13,13 @@ jobs:
         uses: actions/checkout@master
       - name: Install Dependencies
         run: npm install
-      - name: Run Tests
-        env:
-          CI: true
-        run: npm test
       - name: Build
-        run: npm run build
+        run: npm run build-prod
       - name: Archive Production Artifact
         uses: actions/upload-artifact@master
         with:
-          name: build
-          path: build
+          name: dist
+          path: dist
   deploy:
     name: Deploy
     needs: build
@@ -34,8 +30,8 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@master
         with:
-          name: build
-          path: build
+          name: dist
+          path: dist
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
