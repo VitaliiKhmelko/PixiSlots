@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import * as slots from './slots.js';
+import * as slots from './slots';
 
 @Component({
   selector: 'app-slots',
@@ -16,7 +16,7 @@ export class SlotsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    slots.load(this.container.nativeElement).then(game => {
+    slots.load(this.container.nativeElement).then((game: any) => {
       this.game = game;
       this.container.nativeElement.appendChild(this.game.view);
     });
