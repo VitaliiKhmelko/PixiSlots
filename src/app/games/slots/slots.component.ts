@@ -26,7 +26,7 @@ export class SlotsComponent implements OnInit, AfterViewInit {
       this.container.nativeElement.appendChild(this.game.app.view);
     });
 
-    window.onresize = () => this.scaleGame();
+    this.window.nativeWindow.onresize = () => this.scaleGame();
   }
 
   startPlay(): void {
