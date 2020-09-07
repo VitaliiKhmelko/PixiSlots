@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SlotsModule } from './games/slots/slots.module';
+import { WindowRefService } from './services/window-ref.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,9 @@ import { SlotsModule } from './games/slots/slots.module';
     BrowserModule,
     SlotsModule,
   ],
-  providers: [],
+  providers: [
+    WindowRefService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

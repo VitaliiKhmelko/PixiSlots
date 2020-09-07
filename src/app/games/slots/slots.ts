@@ -1,10 +1,10 @@
 import * as PIXI from 'pixi.js';
 
 // tslint:disable
-export function load(htmlElement) {
+export function load(htmlElement: HTMLElement) {
 
     const app = new PIXI.Application({ backgroundColor: 0x1099bb, resizeTo: htmlElement });
-    const promise = new Promise(runGame);
+    const promise = new Promise<{ app: PIXI.Application; startPlay: () => void }>(runGame);
     
     // A wrapper around all game logic
     // Resolve a promise and return application view and startPlay function
@@ -16,8 +16,8 @@ export function load(htmlElement) {
             .add('examples/assets/skully.png', 'https://pixijs.io/examples/examples/assets/skully.png')
             .load(onAssetsLoaded);
 
-        const REEL_WIDTH = 160;
-        const SYMBOL_SIZE = 150;
+        const REEL_WIDTH = htmlElement.clientWidth / 5;
+        const SYMBOL_SIZE = REEL_WIDTH - 10;
 
         // onAssetsLoaded handler builds the example.
         function onAssetsLoaded() {
@@ -144,8 +144,8 @@ export function load(htmlElement) {
             });
 
             resolve({
-                view: app.view,
-                startPlay: startPlay
+                app,
+                startPlay,
             })
         }
     }
